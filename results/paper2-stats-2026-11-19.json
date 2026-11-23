@@ -1,0 +1,132 @@
+{
+  "n": 500,
+  "method": "percentile bootstrap, 10000 resamples, seed 42; McNemar exact binomial two-sided on EM",
+  "generator": "stub (routing only; FILTER == SINGLE with stub)",
+  "router_probs": "oof cross-fitted",
+  "arms": {
+    "learned-router": {
+      "em": 0.454,
+      "em_ci95": [
+        0.41,
+        0.496
+      ],
+      "f1": 0.7669,
+      "f1_ci95": [
+        0.7452,
+        0.7877
+      ]
+    },
+    "oracle-router": {
+      "em": 0.524,
+      "em_ci95": [
+        0.48,
+        0.568
+      ],
+      "f1": 0.7955,
+      "f1_ci95": [
+        0.7737,
+        0.8163
+      ]
+    },
+    "always-single": {
+      "em": 0.19,
+      "em_ci95": [
+        0.156,
+        0.226
+      ],
+      "f1": 0.6473,
+      "f1_ci95": [
+        0.629,
+        0.665
+      ]
+    },
+    "always-multi": {
+      "em": 0.428,
+      "em_ci95": [
+        0.386,
+        0.472
+      ],
+      "f1": 0.8467,
+      "f1_ci95": [
+        0.8319,
+        0.8614
+      ]
+    }
+  },
+  "differences": {
+    "learned-router_minus_always-multi_em": {
+      "mean_diff": 0.026,
+      "ci95": [
+        -0.008,
+        0.06
+      ]
+    },
+    "learned-router_minus_always-single_em": {
+      "mean_diff": 0.264,
+      "ci95": [
+        0.222,
+        0.306
+      ]
+    },
+    "learned-router_minus_oracle-router_em": {
+      "mean_diff": -0.07,
+      "ci95": [
+        -0.094,
+        -0.048
+      ]
+    },
+    "learned-router_minus_always-multi_f1": {
+      "mean_diff": -0.0799,
+      "ci95": [
+        -0.0993,
+        -0.061
+      ]
+    },
+    "learned-router_minus_always-single_f1": {
+      "mean_diff": 0.1195,
+      "ci95": [
+        0.102,
+        0.1375
+      ]
+    },
+    "learned-router_minus_oracle-router_f1": {
+      "mean_diff": -0.0286,
+      "ci95": [
+        -0.0385,
+        -0.0195
+      ]
+    }
+  },
+  "mcnemar_em": {
+    "learned-router_vs_always-multi": {
+      "both_correct": 184,
+      "learned_only_correct": 43,
+      "other_only_correct": 30,
+      "both_wrong": 243,
+      "discordant": 73,
+      "p_exact_two_sided": 0.159712,
+      "chi2_cc": 1.973,
+      "p_chi2_cc": 0.160172
+    },
+    "learned-router_vs_always-single": {
+      "both_correct": 86,
+      "learned_only_correct": 141,
+      "other_only_correct": 9,
+      "both_wrong": 264,
+      "discordant": 150,
+      "p_exact_two_sided": 0.0,
+      "chi2_cc": 114.407,
+      "p_chi2_cc": 0.0
+    },
+    "learned-router_vs_oracle-router": {
+      "both_correct": 227,
+      "learned_only_correct": 0,
+      "other_only_correct": 35,
+      "both_wrong": 238,
+      "discordant": 35,
+      "p_exact_two_sided": 0.0,
+      "chi2_cc": 33.029,
+      "p_chi2_cc": 0.0
+    }
+  }
+}

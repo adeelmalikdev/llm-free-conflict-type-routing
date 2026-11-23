@@ -1,0 +1,220 @@
+{
+  "dataset": "RAMDocs test (500 examples)",
+  "seed": 42,
+  "n_examples": 500,
+  "feature_names": [
+    "n_docs",
+    "mean_doc_len_words",
+    "sim_mean",
+    "sim_min",
+    "n_distinct_answers",
+    "majority_answer_share",
+    "n_docs_with_answer",
+    "sim_std",
+    "sim_max",
+    "n_answer_clusters",
+    "largest_cluster_support",
+    "largest_cluster_share",
+    "n_singleton_clusters",
+    "mean_cluster_size_distinct",
+    "top_answer_count",
+    "second_answer_count",
+    "top_minus_second",
+    "top_second_ratio",
+    "answer_entropy",
+    "n_answers_support_ge2",
+    "frac_docs_no_answer",
+    "mean_answer_len_tokens"
+  ],
+  "n_features": 22,
+  "nli_features": "requested but skipped: transformers/torch not available (ModuleNotFoundError)",
+  "cv_setup": {
+    "outer": "GroupKFold(n_splits=5, shuffle=True, random_state=42), groups = question index",
+    "inner": "GroupKFold(n_splits=3, shuffle=True, random_state=42), GridSearchCV scoring=roc_auc",
+    "metrics": "pooled out-of-fold predictions across the 5 outer folds"
+  },
+  "targets": {
+    "misinfo_present": {
+      "prevalence": 0.486,
+      "majority_class_baseline": {
+        "accuracy": 0.514,
+        "roc_auc": 0.5,
+        "pr_auc_equals_prevalence": 0.486,
+        "brier_constant_prevalence": 0.2498
+      },
+      "models": {
+        "logreg": {
+          "roc_auc": 0.8692,
+          "pr_auc": 0.8851,
+          "accuracy_at_0.5": 0.782,
+          "brier": 0.1476,
+          "ece_10bin": 0.0844,
+          "outer_fold_roc_auc_mean": 0.8729,
+          "outer_fold_roc_auc_std": 0.029,
+          "outer_fold_best_params": [
+            {
+              "clf__C": 10.0,
+              "clf__class_weight": null
+            },
+            {
+              "clf__C": 1.0,
+              "clf__class_weight": "balanced"
+            },
+            {
+              "clf__C": 10.0,
+              "clf__class_weight": null
+            },
+            {
+              "clf__C": 10.0,
+              "clf__class_weight": null
+            },
+            {
+              "clf__C": 10.0,
+              "clf__class_weight": "balanced"
+            }
+          ],
+          "final_model_file": "router_final_logreg_misinfo_present.joblib",
+          "final_model_best_params": {
+            "clf__C": 10.0,
+            "clf__class_weight": "balanced"
+          },
+          "final_model_inner_cv_roc_auc": 0.8757
+        },
+        "gradient_boosting": {
+          "roc_auc": 0.9531,
+          "pr_auc": 0.9552,
+          "accuracy_at_0.5": 0.876,
+          "brier": 0.0844,
+          "ece_10bin": 0.0391,
+          "outer_fold_roc_auc_mean": 0.957,
+          "outer_fold_roc_auc_std": 0.0205,
+          "outer_fold_best_params": [
+            {
+              "learning_rate": 0.05,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            },
+            {
+              "learning_rate": 0.1,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            },
+            {
+              "learning_rate": 0.05,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            },
+            {
+              "learning_rate": 0.1,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            },
+            {
+              "learning_rate": 0.05,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            }
+          ],
+          "final_model_file": "router_final_gradient_boosting_misinfo_present.joblib",
+          "final_model_best_params": {
+            "learning_rate": 0.05,
+            "max_iter": 100,
+            "max_leaf_nodes": 31
+          },
+          "final_model_inner_cv_roc_auc": 0.9598
+        }
+      }
+    },
+    "ambiguous_multi_entity": {
+      "prevalence": 0.8,
+      "majority_class_baseline": {
+        "accuracy": 0.8,
+        "roc_auc": 0.5,
+        "pr_auc_equals_prevalence": 0.8,
+        "brier_constant_prevalence": 0.16
+      },
+      "models": {
+        "logreg": {
+          "roc_auc": 0.8819,
+          "pr_auc": 0.9672,
+          "accuracy_at_0.5": 0.836,
+          "brier": 0.1119,
+          "ece_10bin": 0.0627,
+          "outer_fold_roc_auc_mean": 0.8792,
+          "outer_fold_roc_auc_std": 0.0334,
+          "outer_fold_best_params": [
+            {
+              "clf__C": 10.0,
+              "clf__class_weight": "balanced"
+            },
+            {
+              "clf__C": 1.0,
+              "clf__class_weight": "balanced"
+            },
+            {
+              "clf__C": 10.0,
+              "clf__class_weight": null
+            },
+            {
+              "clf__C": 0.1,
+              "clf__class_weight": null
+            },
+            {
+              "clf__C": 0.1,
+              "clf__class_weight": null
+            }
+          ],
+          "final_model_file": "router_final_logreg_ambiguous_multi_entity.joblib",
+          "final_model_best_params": {
+            "clf__C": 1.0,
+            "clf__class_weight": null
+          },
+          "final_model_inner_cv_roc_auc": 0.8838
+        },
+        "gradient_boosting": {
+          "roc_auc": 0.9179,
+          "pr_auc": 0.9754,
+          "accuracy_at_0.5": 0.9,
+          "brier": 0.0802,
+          "ece_10bin": 0.0456,
+          "outer_fold_roc_auc_mean": 0.9264,
+          "outer_fold_roc_auc_std": 0.0313,
+          "outer_fold_best_params": [
+            {
+              "learning_rate": 0.1,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            },
+            {
+              "learning_rate": 0.05,
+              "max_iter": 300,
+              "max_leaf_nodes": 15
+            },
+            {
+              "learning_rate": 0.05,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            },
+            {
+              "learning_rate": 0.1,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            },
+            {
+              "learning_rate": 0.05,
+              "max_iter": 100,
+              "max_leaf_nodes": 15
+            }
+          ],
+          "final_model_file": "router_final_gradient_boosting_ambiguous_multi_entity.joblib",
+          "final_model_best_params": {
+            "learning_rate": 0.1,
+            "max_iter": 100,
+            "max_leaf_nodes": 15
+          },
+          "final_model_inner_cv_roc_auc": 0.9295
+        }
+      }
+    }
+  }
+}

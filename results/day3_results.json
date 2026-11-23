@@ -1,0 +1,65 @@
+{
+  "dataset": "RAMDocs test (500 examples)",
+  "router_model": "gradient_boosting",
+  "router_probs": "oof",
+  "router_probs_note": "oof: 5-fold cross-fitted, honest",
+  "generator": "stub",
+  "model_path": null,
+  "thresholds": {
+    "misinfo": 0.5,
+    "ambiguous": 0.5
+  },
+  "route_accuracy_vs_true_labels": 0.838,
+  "arms": {
+    "learned-router": {
+      "n": 500,
+      "answer_set_em": 0.454,
+      "answer_set_f1": 0.7669,
+      "route_counts": {
+        "SINGLE": 52,
+        "MULTI": 205,
+        "FILTER": 242,
+        "ABSTAIN": 1
+      },
+      "median_latency_ms": 1.9,
+      "mean_generator_calls": 0.998,
+      "mean_tokens_per_q": 0.0
+    },
+    "oracle-router": {
+      "n": 500,
+      "answer_set_em": 0.524,
+      "answer_set_f1": 0.7955,
+      "route_counts": {
+        "SINGLE": 43,
+        "FILTER": 243,
+        "ABSTAIN": 1,
+        "MULTI": 213
+      },
+      "median_latency_ms": 0.0,
+      "mean_generator_calls": 0.998,
+      "mean_tokens_per_q": 0.0
+    },
+    "always-single": {
+      "n": 500,
+      "answer_set_em": 0.19,
+      "answer_set_f1": 0.6473,
+      "route_counts": {
+        "SINGLE": 500
+      },
+      "median_latency_ms": 0.0,
+      "mean_generator_calls": 1.0,
+      "mean_tokens_per_q": 0.0
+    },
+    "always-multi": {
+      "n": 500,
+      "answer_set_em": 0.428,
+      "answer_set_f1": 0.8467,
+      "route_counts": {
+        "MULTI": 500
+      },
+      "median_latency_ms": 0.0,
+      "mean_generator_calls": 1.0,
+      "mean_tokens_per_q": 0.0
+    }
+  }
+}
